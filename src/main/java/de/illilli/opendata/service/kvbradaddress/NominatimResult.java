@@ -4,6 +4,32 @@ import java.util.Arrays;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * <pre>
+ * {
+ *   "place_id":"66607149",
+ *   "licence":"Data © OpenStreetMap contributors, ODbL 1.0. http:\/\/www.openstreetmap.org\/copyright",
+ *   "osm_type":"way",
+ *   "osm_id":"48120499",
+ *   "lat":"50.9395609",
+ *   "lon":"6.97604493219026",
+ *   "display_name":"6, Ottoplatz, Deutz, Innenstadt, Köln, Regierungsbezirk Köln, Nordrhein-Westfalen, 50679, Deutschland",
+ *   "address":{
+ *     "house_number":"6",
+ *     "road":"Ottoplatz",
+ *     "suburb":"Deutz",
+ *     "city_district":"Innenstadt",
+ *     "city":"Köln",
+ *     "county":"Köln",
+ *     "state_district":"Regierungsbezirk Köln",
+ *     "state":"Nordrhein-Westfalen",
+ *     "postcode":"50679",
+ *     "country":"Deutschland",
+ *     "country_code":"de"
+ *   }
+ * }
+ * </pre>
+ */
 public class NominatimResult {
 
 	@JsonProperty("place_id")
@@ -35,12 +61,10 @@ public class NominatimResult {
 
 	@Override
 	public String toString() {
-		return "Result [placeId=" + placeId + ", licence=" + licence
-				+ ", osm_type=" + osm_type + ", osmId=" + osmId
-				+ ", boundingbox=" + Arrays.toString(boundingbox) + ", lat="
-				+ lat + ", lon=" + lon + ", displayName=" + displayName
-				+ ", resultClass=" + resultClass + ", type=" + type
-				+ ", importance=" + importance + ", address=" + address + "]";
+		return "Result [placeId=" + placeId + ", licence=" + licence + ", osm_type=" + osm_type + ", osmId=" + osmId
+				+ ", boundingbox=" + Arrays.toString(boundingbox) + ", lat=" + lat + ", lon=" + lon + ", displayName="
+				+ displayName + ", resultClass=" + resultClass + ", type=" + type + ", importance=" + importance
+				+ ", address=" + address + "]";
 	}
 
 	@Override
@@ -49,19 +73,15 @@ public class NominatimResult {
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + Arrays.hashCode(boundingbox);
-		result = prime * result
-				+ ((displayName == null) ? 0 : displayName.hashCode());
-		result = prime * result
-				+ ((importance == null) ? 0 : importance.hashCode());
+		result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
+		result = prime * result + ((importance == null) ? 0 : importance.hashCode());
 		result = prime * result + ((lat == null) ? 0 : lat.hashCode());
 		result = prime * result + ((licence == null) ? 0 : licence.hashCode());
 		result = prime * result + ((lon == null) ? 0 : lon.hashCode());
 		result = prime * result + (int) (osmId ^ (osmId >>> 32));
-		result = prime * result
-				+ ((osm_type == null) ? 0 : osm_type.hashCode());
+		result = prime * result + ((osm_type == null) ? 0 : osm_type.hashCode());
 		result = prime * result + ((placeId == null) ? 0 : placeId.hashCode());
-		result = prime * result
-				+ ((resultClass == null) ? 0 : resultClass.hashCode());
+		result = prime * result + ((resultClass == null) ? 0 : resultClass.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}

@@ -27,17 +27,17 @@ import de.illilli.opendata.service.Config;
 public class AskForGeoCodingNominatim {
 
 	private static final Logger logger = Logger.getLogger(AskForGeoCodingNominatim.class);
-	private NominatimResult[] nominatimResult;
+	private NominatimResult nominatimResult;
 	String urlString = Config.getProperty("nominatim.url");
 
 	public AskForGeoCodingNominatim(String format, double lat, double lon) throws MalformedURLException, IOException {
-		urlString = "/reverse?format=" + format + "&json&lat=" + lat + "&lon=" + lon;
+		urlString = urlString + "/reverse?format=" + format + "&json&lat=" + lat + "&lon=" + lon;
 		URL url = new URL(urlString);
 
 		InputStream inputStream = url.openStream();
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			nominatimResult = mapper.readValue(inputStream, NominatimResult[].class);
+			nominatimResult = mapper.readValue(inputStream, NominatimResult.class);
 		} catch (UnrecognizedPropertyException e) {
 			logger.error(e);
 		}
@@ -63,12 +63,12 @@ public class AskForGeoCodingNominatim {
 	public AskForGeoCodingNominatim(InputStream inputStream)
 			throws JsonParseException, JsonMappingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		nominatimResult = mapper.readValue(inputStream, NominatimResult[].class);
+		nominatimResult = mapper.readValue(inputStream, NominatimResult.class);
 		logger.debug(nominatimResult.toString());
 
 	}
 
-	public NominatimResult[] getNominatimResult() {
+	public NominatimResult getNominatimResult() {
 		return nominatimResult;
 	}
 
