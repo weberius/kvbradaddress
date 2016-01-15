@@ -38,6 +38,7 @@ public class AskForGeoCodingNominatim {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			nominatimResult = mapper.readValue(inputStream, NominatimResult.class);
+			logger.debug(nominatimResult);
 		} catch (UnrecognizedPropertyException e) {
 			logger.error(e);
 		}

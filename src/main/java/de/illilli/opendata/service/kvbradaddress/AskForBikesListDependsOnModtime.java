@@ -8,7 +8,7 @@ import java.net.URL;
 public class AskForBikesListDependsOnModtime extends AskForBikes {
 
 	public AskForBikesListDependsOnModtime(long lastrun) throws MalformedURLException, IOException {
-		String urlString = url + "?lastrun=" + lastrun;
+		String urlString = url + "/" + lastrun;
 		this.inputStream = new URL(urlString).openStream();
 	}
 
