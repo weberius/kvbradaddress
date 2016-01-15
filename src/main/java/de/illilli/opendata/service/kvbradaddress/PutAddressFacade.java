@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.naming.NamingException;
 
@@ -30,10 +29,10 @@ public class PutAddressFacade implements Facade {
 		this.lastrun = new SelectLastrunFromDb().getTime();
 		logger.info("lastrun: '" + new Date(this.lastrun).toString() + "'");
 		// lese alle Änderungen nach dem letzten Lauf
-		this.askForBikes = new AskForBikesMapDependsOnModtime(lastrun);
-		Map<Integer, List<BikeBo>> bikesMap = this.askForBikes.getBikesMap();
+		this.askForBikes = new AskForBikesListDependsOnModtime(lastrun);
+		List<BikeBo> bikesList = this.askForBikes.getBikesList();
 		// ermittle für alle Punkte die Adresse
-		List<Address> addressList = new NominatimFacade().getList(bikesMap);
+		List<Address> addressList = new NominatimFacade().getList(bikesList);
 		// schreibe das Ergebnis in die Datenbank
 		int numberOfInserts = new InsertAddressesToDb().insert(addressList);
 		// vermerken, dass Daten geschrieben wurde

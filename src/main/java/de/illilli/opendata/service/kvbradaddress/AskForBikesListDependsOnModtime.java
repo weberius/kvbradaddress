@@ -5,14 +5,14 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class AskForBikesMapDependsOnModtime extends AskForBikes {
+public class AskForBikesListDependsOnModtime extends AskForBikes {
 
-	public AskForBikesMapDependsOnModtime(long lastrun) throws MalformedURLException, IOException {
+	public AskForBikesListDependsOnModtime(long lastrun) throws MalformedURLException, IOException {
 		String urlString = url + "?lastrun=" + lastrun;
 		this.inputStream = new URL(urlString).openStream();
 	}
 
-	public AskForBikesMapDependsOnModtime(InputStream inputStream) {
+	public AskForBikesListDependsOnModtime(InputStream inputStream) {
 		this.inputStream = inputStream;
 	}
 

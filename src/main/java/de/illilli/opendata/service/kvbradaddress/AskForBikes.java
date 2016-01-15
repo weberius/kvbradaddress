@@ -3,9 +3,8 @@ package de.illilli.opendata.service.kvbradaddress;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.util.Hashtable;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 
@@ -21,7 +20,7 @@ import de.illilli.opendata.service.Config;
  */
 public abstract class AskForBikes {
 
-	String url = Config.getProperty("kvblive.bikesmap.url");
+	String url = Config.getProperty("kvblive.bikeslist.url");
 	InputStream inputStream;
 
 	/**
@@ -31,14 +30,14 @@ public abstract class AskForBikes {
 	 * @return
 	 * @throws IOException
 	 */
-	public Map<Integer, List<BikeBo>> getBikesMap() throws IOException {
+	public List<BikeBo> getBikesList() throws IOException {
 		Gson gson = new Gson();
-		Type type = new TypeToken<Map<Integer, List<BikeBo>>>() {
+		Type type = new TypeToken<List<BikeBo>>() {
 		}.getType();
 		String json = IOUtils.toString(inputStream);
-		Map<Integer, List<BikeBo>> bikesMap = gson.fromJson(json, type);
+		List<BikeBo> bikesMap = gson.fromJson(json, type);
 		if (bikesMap == null) {
-			bikesMap = new Hashtable<Integer, List<BikeBo>>();
+			bikesMap = new ArrayList<BikeBo>();
 		}
 		return bikesMap;
 	}
