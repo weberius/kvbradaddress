@@ -13,6 +13,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.illilli.opendata.service.DbWriter;
 import de.illilli.opendata.service.Facade;
+import de.illilli.opendata.service.kvbradaddress.jdbc.InsertAddressesToDb;
 import de.illilli.opendata.service.kvbradaddress.jdbc.InsertLastRunToDb;
 import de.illilli.opendata.service.kvbradaddress.jdbc.SelectLastrunFromDb;
 
@@ -32,12 +33,11 @@ public class PutAddressFacade implements Facade {
 		this.askForBikes = new AskForBikesListDependsOnModtime(lastrun);
 		List<BikeBo> bikesList = this.askForBikes.getBikesList();
 		// ermittle für alle Punkte die Adresse
-		List<Address> addressList = new NominatimFacade().getList(bikesList);
+		List<NominatimResult> nominatimResultList = new NominatimFacade().getList(bikesList);
 		// schreibe das Ergebnis in die Datenbank
-		int numberOfInserts = new InsertAddressesToDb().insert(addressList);
+		int numberOfInserts = new InsertAddressesToDb().insert(nominatimResultList);
 		// vermerken, dass Daten geschrieben wurde
 		this.lastRunWriter = new InsertLastRunToDb(numberOfInserts);
-
 	}
 
 	@Override

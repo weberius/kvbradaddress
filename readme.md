@@ -19,8 +19,8 @@ Die Rückgabe wird in ein Java-Objekt deserialisiert (vgl. [denkmalgeocoding](ht
 ### Datentabelle
 
 	CREATE TABLE address (
-	    osm_id         integer,
-		housenumber    varchar(10),
+	    osm_id         bigint,
+		housenumber    varchar(30),
 		neighbourhood  varchar(256),
 		suburb         varchar(256),
 		cityDistrict   varchar(256),
@@ -28,7 +28,7 @@ Die Rückgabe wird in ein Java-Objekt deserialisiert (vgl. [denkmalgeocoding](ht
 		county         varchar(256),
 		stateDistrict  varchar(256),
 		state          varchar(256),
-		postcode       varchar(10),
+		postcode       varchar(20),
 		country        varchar(256),
 		countrycode    varchar(2),
     	modtime        timestamp DEFAULT current_timestamp

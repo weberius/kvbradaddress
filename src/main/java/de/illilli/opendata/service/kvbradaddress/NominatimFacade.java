@@ -8,19 +8,19 @@ import java.util.List;
 public class NominatimFacade {
 
 	public static final String FORMAT = "json";
-	private List<Address> addressList;
+	private List<NominatimResult> nominatimResultList;
 
 	public NominatimFacade() {
-		addressList = new ArrayList<Address>();
+		nominatimResultList = new ArrayList<NominatimResult>();
 	}
 
-	public List<Address> getList(List<BikeBo> bikesList) throws MalformedURLException, IOException {
+	public List<NominatimResult> getList(List<BikeBo> bikesList) throws MalformedURLException, IOException {
 		for (BikeBo bikeBo : bikesList) {
 			AskForGeoCodingNominatim askFor = new AskForGeoCodingNominatim(NominatimFacade.FORMAT, bikeBo.getLat(),
 					bikeBo.getLng());
 			NominatimResult result = askFor.getNominatimResult();
-			addressList.add(result.address);
+			nominatimResultList.add(result);
 		}
-		return addressList;
+		return nominatimResultList;
 	}
 }
