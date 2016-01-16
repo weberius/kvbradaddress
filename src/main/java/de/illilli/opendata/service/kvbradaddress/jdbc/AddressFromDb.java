@@ -2,7 +2,7 @@ package de.illilli.opendata.service.kvbradaddress.jdbc;
 
 import java.sql.Timestamp;
 
-public class AddressDto {
+public class AddressFromDb {
 
 	private int osm_id;
 	private String housenumber;
@@ -158,7 +158,7 @@ public class AddressDto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AddressDto other = (AddressDto) obj;
+		AddressFromDb other = (AddressFromDb) obj;
 		if (city == null) {
 			if (other.city != null)
 				return false;

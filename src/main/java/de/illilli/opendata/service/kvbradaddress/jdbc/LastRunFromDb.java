@@ -2,7 +2,7 @@ package de.illilli.opendata.service.kvbradaddress.jdbc;
 
 import java.sql.Timestamp;
 
-public class LastRunDao {
+public class LastRunFromDb {
 
 	private Timestamp modtime;
 	private String comment;
@@ -40,7 +40,7 @@ public class LastRunDao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LastRunDao other = (LastRunDao) obj;
+		LastRunFromDb other = (LastRunFromDb) obj;
 		if (comment == null) {
 			if (other.comment != null)
 				return false;

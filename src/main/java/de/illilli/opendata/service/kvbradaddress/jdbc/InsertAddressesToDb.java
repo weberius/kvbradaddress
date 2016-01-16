@@ -18,6 +18,8 @@ import de.illilli.opendata.service.kvbradaddress.NominatimResult;
 
 public class InsertAddressesToDb {
 
+	public static final int SRID = 4326;
+
 	private int inserts;
 
 	public int insert(List<NominatimResult> nominatimResultList) throws SQLException, IOException, NamingException {
@@ -29,7 +31,7 @@ public class InsertAddressesToDb {
 		// uid,name,bike,number
 		for (NominatimResult bo : nominatimResultList) {
 			Point point = new Point(bo.lat, bo.lon);
-			point.setSrid(4326);
+			point.setSrid(SRID);
 			PGgeometry geom = new PGgeometry(point);
 
 			inserts += run.update(conn, sql, bo.osmId, bo.address.houseNumber, bo.address.neighbourhood,
