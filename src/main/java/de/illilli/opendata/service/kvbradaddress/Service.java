@@ -63,8 +63,8 @@ public class Service {
 	 * 
 	 * <p>
 	 * Beispiel: <a href=
-	 * "http://localhost:8080/kvbradanalysis/service/6.953765483/50.9639325">
-	 * /kvbradanalysis/service/&lt;x&gt;/&lt;y&gt;</a>
+	 * "http://localhost:8080/kvbradaddress/service/50.856148/6.96303448464509">
+	 * /kvbradaddress/service/&lt;lat&gt;/&lt;lng&gt;</a>
 	 * </p>
 	 * 
 	 * @param x
@@ -79,12 +79,12 @@ public class Service {
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	@Path("/{x}/{y}")
-	public String getAddress(@PathParam("x") Double x, @PathParam("y") Double y) throws JsonParseException,
+	@Path("/{lat}/{lng}")
+	public String getAddress(@PathParam("lat") Double lat, @PathParam("lng") Double lng) throws JsonParseException,
 			JsonMappingException, IOException, SQLException, NamingException, ClassNotFoundException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		Facade facade = new AddressFacade(x, y);
+		Facade facade = new AddressFacade(lat, lng);
 		return facade.getJson();
 	}
 

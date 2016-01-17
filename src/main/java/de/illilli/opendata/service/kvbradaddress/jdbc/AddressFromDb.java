@@ -7,6 +7,7 @@ public class AddressFromDb {
 	private int osm_id;
 	private String housenumber;
 	private String neighbourhood;
+	private String road;
 	private String suburb;
 	private String citydistrict;
 	private String city;
@@ -40,6 +41,14 @@ public class AddressFromDb {
 
 	public void setNeighbourhood(String neighbourhood) {
 		this.neighbourhood = neighbourhood;
+	}
+
+	public String getRoad() {
+		return road;
+	}
+
+	public void setRoad(String road) {
+		this.road = road;
 	}
 
 	public String getSuburb() {
@@ -124,10 +133,10 @@ public class AddressFromDb {
 
 	@Override
 	public String toString() {
-		return "AddressDto [osm_id=" + osm_id + ", housenumber=" + housenumber + ", neighbourhood=" + neighbourhood
-				+ ", suburb=" + suburb + ", citydistrict=" + citydistrict + ", city=" + city + ", county=" + county
-				+ ", statedistrict=" + statedistrict + ", state=" + state + ", postcode=" + postcode + ", country="
-				+ country + ", countrycode=" + countrycode + ", modtime=" + modtime + "]";
+		return "AddressFromDb [osm_id=" + osm_id + ", housenumber=" + housenumber + ", neighbourhood=" + neighbourhood
+				+ ", road=" + road + ", suburb=" + suburb + ", citydistrict=" + citydistrict + ", city=" + city
+				+ ", county=" + county + ", statedistrict=" + statedistrict + ", state=" + state + ", postcode="
+				+ postcode + ", country=" + country + ", countrycode=" + countrycode + ", modtime=" + modtime + "]";
 	}
 
 	@Override
@@ -144,6 +153,7 @@ public class AddressFromDb {
 		result = prime * result + ((neighbourhood == null) ? 0 : neighbourhood.hashCode());
 		result = prime * result + osm_id;
 		result = prime * result + ((postcode == null) ? 0 : postcode.hashCode());
+		result = prime * result + ((road == null) ? 0 : road.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + ((statedistrict == null) ? 0 : statedistrict.hashCode());
 		result = prime * result + ((suburb == null) ? 0 : suburb.hashCode());
@@ -205,6 +215,11 @@ public class AddressFromDb {
 			if (other.postcode != null)
 				return false;
 		} else if (!postcode.equals(other.postcode))
+			return false;
+		if (road == null) {
+			if (other.road != null)
+				return false;
+		} else if (!road.equals(other.road))
 			return false;
 		if (state == null) {
 			if (other.state != null)

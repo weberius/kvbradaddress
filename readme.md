@@ -21,6 +21,7 @@ Die Rückgabe wird in ein Java-Objekt deserialisiert (vgl. [denkmalgeocoding](ht
 	CREATE TABLE address (
 	    osm_id         bigint,
 		housenumber    varchar(30),
+		road           varchar(256),
 		neighbourhood  varchar(256),
 		suburb         varchar(256),
 		cityDistrict   varchar(256),

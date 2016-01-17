@@ -34,10 +34,10 @@ public class InsertAddressesToDb {
 			point.setSrid(SRID);
 			PGgeometry geom = new PGgeometry(point);
 
-			inserts += run.update(conn, sql, bo.osmId, bo.address.houseNumber, bo.address.neighbourhood,
-					bo.address.suburb, bo.address.cityDistrict, bo.address.city, bo.address.county,
-					bo.address.stateDistrict, bo.address.state, bo.address.postcode, bo.address.country,
-					bo.address.countryCode, geom);
+			inserts += run.update(conn, sql, bo.osmId, bo.address.houseNumber, bo.address.road,
+					bo.address.neighbourhood, bo.address.suburb, bo.address.cityDistrict, bo.address.city,
+					bo.address.county, bo.address.stateDistrict, bo.address.state, bo.address.postcode,
+					bo.address.country, bo.address.countryCode, geom);
 		}
 		conn.close();
 

@@ -2,7 +2,8 @@ INSERT INTO
 ADDRESS (
 	    osm_id,
 		housenumber,
-		neighbourhood,
+        road,
+        neighbourhood,
 		suburb,
 		cityDistrict,
 		city,
@@ -14,4 +15,4 @@ ADDRESS (
 		countrycode,
 		geom
 ) 
-VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
