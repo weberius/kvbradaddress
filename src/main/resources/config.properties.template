@@ -4,4 +4,5 @@
 # Danach ist die Datei in config.properties zu kopieren.
 kvbradrouting.bikesmap.url=http://localhost:8080/kvbradrouting/service/json
 kvblive.bikeslist.url=http://localhost:8080/kvbradlive/service/bikeslist
+kvbaddress.latlng.url=http://localhost:8080/kvbradaddress/service
 nominatim.url=http://nominatim.openstreetmap.org
