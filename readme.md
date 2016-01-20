@@ -2,6 +2,16 @@
 
 Ziel dieses Projektes ist mit Hilfe eines Geocoders für jede abgespeicherte Position eines Rades eine Adresse vorzuhalten und ggf. bei mehrfacher Adresse diese zu zählen.
 
+## Endpoints
+
+### /kvbradaddress/service/put
+
+Dieser Service fragt neu hinzugekommene Geo-Punkte ab und ermittelt die dazu gehörenden Adressen. Die Ergebnisse werden dann in die Datenbank geschrieben.
+
+### /kvbradaddress/service/&lt;lat&gt;/&lt;lng&gt;
+
+Dieser Service liefert zu den angegebenen Koordinaten die hinterlegte Adresse zurück. Ist keine Adresse hinterlegt, werden nur die x/y-Koordinaten zurückgeliefert.
+
 ## GeoCoding
 
 Zur Ermittlung der Adresse wird der Geocoding Dienst Nominatim verwendet. Hierfür kann die offizielle Nominatim-Instanz des OSM-Projektes verwendet werden oder ein selbst aufgesetzter Dienst. Bei Abfragen in großem Umfang sollte eine eigene Instanz vewendet werden; vgl. [Usage Policy](http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy).
