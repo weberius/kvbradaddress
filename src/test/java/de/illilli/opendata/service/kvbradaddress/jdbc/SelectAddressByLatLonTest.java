@@ -18,8 +18,8 @@ public class SelectAddressByLatLonTest {
 	public static void main(String[] args) throws SQLException, NamingException, IOException {
 		JndiProperties.setUpConnectionForJndi();
 
-		double lat = 50.9303537;
-		double lng = 7.00170505718218;
+		double lat = 6.9597598;
+		double lng = 50.94397189;
 		SelectAddressByLatLon select = new SelectAddressByLatLon(lat, lng);
 		AddressFromDb address = select.getAddress();
 		System.out.println(address);
